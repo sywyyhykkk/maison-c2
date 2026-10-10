@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f1efe8"><title>拾光 Maison · C2 法式中古居所</title><meta name="description" content="依照 C2 户型图制作的法式中古风 Three.js 交互装修方案。"><link rel="stylesheet" href="style.css"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='9' fill='%23394332'/%3E%3Cpath d='M10 30V18a10 10 0 0 1 20 0v12M16 30V18a4 4 0 0 1 8 0v12' fill='none' stroke='%23e9dcc1' stroke-width='2'/%3E%3C/svg%3E"></head>
+<body>
+<header class="topbar"><a class="brand" href="#" aria-label="返回整体视图"><span class="brand-mark">m</span><span>拾光 <i>Maison</i></span></a><div class="project-title">C2 · 法式中古居所 <span>INTERIOR STUDY / 01</span></div><div class="header-actions"><button id="plan-open" class="text-button" hidden>原始户型</button><button id="guide-open" class="text-button">设计说明</button><button id="save-image" class="solid-button">保存视角 <span>↗</span></button></div></header>
+<main>
+<aside class="sidebar">
+<div class="project-intro"><div class="eyebrow">UN AIR DE FAMILLE</div><h1>温柔的法式，<br>有时间感的家。</h1><p>奶油墙面 · 胡桃木 · 亚麻 · 黄铜</p><div class="project-stats"><div><strong>128<span> m²</span></strong><small>图示建筑面积</small></div><div><strong>4 <span>室</span> 2 <span>厅</span></strong><small>双卫 · 景观长阳台</small></div></div></div>
+<div class="room-heading"><span>空间导览</span><button id="reset-view">全屋总览</button></div>
+<nav id="room-list" aria-label="空间导览"></nav>
+<section class="palette"><div class="eyebrow">MATERIAL PALETTE</div><div class="swatches"><span style="--swatch:#e8dfcb" title="奶油白"><i></i>奶油</span><span style="--swatch:#785139" title="胡桃木"><i></i>木色</span><span style="--swatch:#727657" title="橄榄绿"><i></i>橄榄</span><span style="--swatch:#8d4946" title="酒红色"><i></i>酒红</span><span style="--swatch:#b39154" title="黄铜"><i></i>黄铜</span></div></section>
+<div class="sidebar-foot">基于原始户型的概念设计<br>标注尺寸建模 · 家具与层高为方案假设</div>
+</aside>
+<section class="viewer" aria-label="交互三维户型">
+<div id="canvas-wrap"><canvas id="scene" aria-label="Three.js 三维装修模型。拖动旋转，滚轮缩放，右键拖动平移。" tabindex="0"></canvas><div id="labels" aria-hidden="true"></div><div id="loading"><div class="loader-mark">m</div><p>正在布置你的家…</p></div><div id="webgl-error" hidden><h2>浏览器暂时无法启用三维画面</h2><p>请使用开启硬件加速的 Chrome、Edge 或 Safari。</p><button id="error-plan" hidden>查看原始户型</button></div></div>
+<div class="viewport-heading"><div><span class="eyebrow" id="view-kicker">THE COMPLETE HOME</span><h2 id="view-title">全屋鸟瞰</h2></div><div class="view-settings"><button id="label-toggle" class="icon-toggle active" aria-pressed="true" title="显示房间名称">空间名称</button><button id="day-toggle" class="icon-toggle" aria-pressed="false" title="切换日间和暖灯">日间</button><button id="fullscreen" class="icon-toggle" title="全屏查看">全屏</button></div></div>
+<div class="height-control"><label for="wall-height">墙体高度 <span id="height-value">1.15 m</span></label><input id="wall-height" aria-label="墙体剖切高度" type="range" min="0.2" max="2.8" step="0.05" value="1.15"><div>剖切 <span>完整</span></div></div>
+<div class="orientation"><span>↑</span><small>原图上方</small></div>
+<div id="room-card" class="room-card" hidden><button id="close-card" aria-label="关闭空间说明">×</button><div class="eyebrow" id="room-en"></div><h3 id="room-title"></h3><p id="room-description"></p><div id="room-material"></div><button id="enter-room">进入这个空间 <span>↗</span></button></div>
+<div class="bottom-ui"><div class="mode-switch" role="group" aria-label="视图模式"><button data-mode="orbit" class="selected" aria-pressed="true"><span>◈</span> 鸟瞰</button><button data-mode="plan" aria-pressed="false"><span>▦</span> 平面</button><button data-mode="walk" aria-pressed="false"><span>⌂</span> 漫游</button></div><p id="interaction-hint">拖动旋转 · 滚轮缩放 · 右键平移</p></div>
+<div class="scale-note"><small>模型单位 / 米</small></div>
+<div id="walk-pad" hidden><button data-move="forward" aria-label="前进">↑</button><div><button data-move="left" aria-label="左移">←</button><button data-move="back" aria-label="后退">↓</button><button data-move="right" aria-label="右移">→</button></div></div>
+<div id="toast" role="status"></div>
+</section>
+</main>
+<dialog id="plan-dialog"><div class="dialog-heading"><div><span class="eyebrow">THE ORIGINAL PLAN</span><h2>C2 · 原始户型</h2></div><button data-close="plan-dialog" aria-label="关闭">×</button></div><p class="dialog-lead">建模依据：原图标注 9.0 m 总宽、14.8 m 总进深与 7.2 × 1.5 m 阳台。图上无北针，模型方向按图片上、下、左、右理解。</p><img class="original-plan" alt="用户提供的 C2 四室两厅两卫原始户型图，建筑面积约128平方米"></dialog>
+<dialog id="guide-dialog"><div class="dialog-heading"><div><span class="eyebrow">DESIGN NOTES</span><h2>关于这套法式中古方案</h2></div><button data-close="guide-dialog" aria-label="关闭">×</button></div><div class="guide-content"><p class="guide-intro">以温润的木色为骨架，<br>把法式的线条融入日常。</p><div class="guide-grid"><section><h3>01 / 空间关系</h3><p>保留四房、双卫、原厨房和所有飘窗。中间小卧室按书房兼客房设计；客餐厅连通，长阳台保留洗衣与休闲功能。</p></section><section><h3>02 / 材料语言</h3><p>奶油色墙面搭配细框护墙线；人字拼木地板铺设于起居及睡眠区。胡桃木家具、亚麻软包、橄榄绿和少量黄铜贯穿全屋。</p></section><section><h3>03 / 光与生活</h3><p>白天强调大窗和阳台的自然光。晚间采用 2700–3000 K 暖光的设计意向，以吊灯、台灯和局部壁灯形成层次。</p></section><section><h3>04 / 尺寸与边界</h3><p>128 m² 是原图建筑面积，并非模型套内面积。层高暂定 2.8 m，墙厚约 0.16 m；未标注门窗、家具尺寸按图面比例推定。承重、机电和施工尺寸需现场复核。</p></section></div><h3 class="sources-title">参考与材质来源</h3><div class="source-links"><a href="https://www.thonet.de/en/company/original/214" target="_blank" rel="noreferrer">Thonet · 弯木家具</a><a href="https://www.vitra.com/en-ie/product/standard" target="_blank" rel="noreferrer">Vitra · 中古家具比例</a><a href="https://www.littlegreene.com/rolling-fog-pale" target="_blank" rel="noreferrer">Little Greene · 暖中性色</a><a href="https://polyhaven.com/license" target="_blank" rel="noreferrer">Poly Haven · CC0 材质</a></div><p class="guide-note">此模型用于空间与风格讨论。家具为原创程序化示意模型，不代表具体品牌商品。日间光照为氛围演示，不是基于真实朝向的日照分析。</p></div></dialog>
+<script src="app.js"></script>
+</body></html>

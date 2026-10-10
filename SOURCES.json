@@ -1,0 +1,72 @@
+{
+  "checkedOn": "2026-10-09",
+  "plan": {
+    "source": "user attachment",
+    "includedInRepository": false,
+    "optionalLocalFile": "assets/original-plan.jpg",
+    "grossAreaLabelM2": 128,
+    "netAreaM2": null,
+    "orientation": "No north arrow verified; use image-relative directions"
+  },
+  "references": [
+    {
+      "title": "Thonet 214",
+      "url": "https://www.thonet.de/en/company/original/214",
+      "use": "Bentwood and woven-seat visual reference; no brand models copied",
+      "assetDownloaded": false
+    },
+    {
+      "title": "Vitra — Standard, Jean Prouvé",
+      "url": "https://www.vitra.com/en-ie/product/standard",
+      "use": "Wood and metal material pairing and mid-century proportions",
+      "assetDownloaded": false
+    },
+    {
+      "title": "Little Greene — Rolling Fog Pale",
+      "url": "https://www.littlegreene.com/rolling-fog-pale",
+      "use": "Warm neutral palette reference; model hex values are illustrative",
+      "assetDownloaded": false
+    }
+  ],
+  "textures": [
+    {
+      "id": "herringbone_parquet",
+      "title": "Herringbone Parquet",
+      "url": "https://polyhaven.com/a/herringbone_parquet",
+      "authors": [
+        "Jenelle van Heerden",
+        "Sergej Majboroda"
+      ],
+      "license": "CC0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "physicalWidthM": 3.4,
+      "downloaded": true,
+      "resolution": "1024 × 1024",
+      "localFile": "assets/herringbone_parquet_diff_1k.jpg",
+      "usage": "Wood floors in bedrooms, study and living spaces",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/herringbone_parquet/herringbone_parquet_diff_1k.jpg"
+    },
+    {
+      "id": "marble_01",
+      "title": "Marble 01",
+      "url": "https://polyhaven.com/a/marble_01",
+      "authors": [
+        "Rob Tuytel"
+      ],
+      "license": "CC0",
+      "licenseUrl": "https://polyhaven.com/license",
+      "physicalWidthM": 1.5,
+      "downloaded": true,
+      "resolution": "1024 × 1024",
+      "localFile": "assets/marble_01_diff_1k.jpg",
+      "usage": "Kitchen and balcony stone floor; counters use original procedural stone",
+      "downloadUrl": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/marble_01/marble_01_diff_1k.jpg"
+    }
+  ],
+  "software": {
+    "three": "0.180.0 (MIT)",
+    "esbuild": "0.25.10 (MIT, build tool only)"
+  },
+  "originalGeometry": "All furniture and building geometry authored for this concept; no branded furniture model files used.",
+  "offline": "Color textures are also embedded as data URLs in app.js. Runtime has no external network dependency."
+}

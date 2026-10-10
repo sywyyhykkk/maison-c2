@@ -1,0 +1,18 @@
+{
+  "name": "maison-c2-design",
+  "version": "1.0.0",
+  "description": "拾光 Maison：基于 C2 户型图的法式中古 Three.js 交互装修方案",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "node scripts/embed-textures.mjs",
+    "build": "esbuild src/main.js --bundle --format=iife --minify --outfile=app.js",
+    "start": "node server.mjs"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}
