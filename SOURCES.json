@@ -2,11 +2,18 @@
   "checkedOn": "2026-10-09",
   "plan": {
     "source": "user attachment",
-    "includedInRepository": false,
-    "optionalLocalFile": "assets/original-plan.jpg",
+    "includedInRepository": true,
     "grossAreaLabelM2": 128,
     "netAreaM2": null,
-    "orientation": "No north arrow verified; use image-relative directions"
+    "orientation": "No north arrow verified; use image-relative directions",
+    "localFile": "reference/floor-plans/c2-original.jpg",
+    "originalFilename": "e46c1b84330f62ef4b0e01fb5e6e9d2e.JPG",
+    "publicationAuthorization": {
+      "authorizedBy": "user",
+      "date": "2026-10-10",
+      "scope": "Include the original C2 floor plan in this public repository and project viewer"
+    },
+    "license": "Not CC0; copyright remains with the original rights holder. User-authorized publication in this project."
   },
   "references": [
     {
@@ -68,5 +75,5 @@
     "esbuild": "0.25.10 (MIT, build tool only)"
   },
   "originalGeometry": "All furniture and building geometry authored for this concept; no branded furniture model files used.",
-  "offline": "Color textures are also embedded as data URLs in app.js. Runtime has no external network dependency."
+  "offline": "Color textures and the original C2 floor plan are embedded as data URLs in app.js. Runtime has no external network dependency."
 }

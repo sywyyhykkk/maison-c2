@@ -18,7 +18,7 @@ npm start
 
 打开 <http://127.0.0.1:4173>。如端口已占用，可用 `PORT=4175 npm start` 指定端口。
 
-修改源码后重新执行 `npm run build`，刷新页面即可。构建时先把两张本地 JPG 材质转换为内嵌数据，再由 esbuild 打包 Three.js 和应用代码；运行时不依赖外部 CDN。浏览器需要支持 WebGL 2。
+修改源码后重新执行 `npm run build`，刷新页面即可。构建时先把两张本地 JPG 材质和仓库中的 C2 原始户型图转换为内嵌数据，再由 esbuild 打包 Three.js 和应用代码；运行时不依赖外部 CDN。浏览器需要支持 WebGL 2。
 
 ## 交互
 
@@ -26,14 +26,15 @@ npm start
 - **平面**：俯视核对空间布置，拖动平移，滚轮缩放。
 - **漫游**：选择房间进入对应视角，拖动环顾；WASD、方向键或屏幕方向按钮移动，Esc 返回鸟瞰。墙体和户型边缘参与碰撞，家具为展示模型。
 - 调整墙体剖切高度、切换日间与暖灯、显示空间名称、保存当前视角。
-- 查看设计说明；本地提供原图后可查看原始户型。
+- 查看设计说明和原始户型图。
 
 ## 文件结构
 
 ```text
 assets/                    两张 CC0 材质
 licenses/                  Three.js 第三方许可
-scripts/embed-textures.mjs  从原始 JPG 生成内嵌材质模块
+reference/floor-plans/      用户授权公开的原始户型图与来源说明
+scripts/embed-textures.mjs  从材质和户型 JPG 生成内嵌数据模块
 src/
   architecture.js          户型尺寸、建筑和房间数据
   furniture.js             原创程序化家具
@@ -48,11 +49,11 @@ SOURCES.json               素材来源、作者与许可记录
 
 `app.js` 和 `src/textures.js` 为构建产物，不提交到 Git。依赖、缓存、环境文件、日志、预览导出和 ZIP 交付包也由 `.gitignore` 排除。保留 `package-lock.json` 以固定依赖版本。
 
-用户提供的原始户型图片不包含在公开仓库中。如需在本地显示，可将图片放到 `assets/original-plan.jpg` 后重新构建；此文件已被 Git 忽略。没有原图时自动隐藏原图入口，三维模型正常运行。构建会将本地原图（如果存在）内嵌到 `app.js`，请按实际发布范围选择是否提供该文件。
+用户已授权将原始 C2 户型图公开收录在 [reference/floor-plans/c2-original.jpg](reference/floor-plans/c2-original.jpg)。构建从该文件生成 `floorPlanImage` 数据 URL，原图随 `app.js` 一起提供，克隆仓库后无需额外补图。来源说明见 [reference/floor-plans/README.md](reference/floor-plans/README.md)。旧路径 `assets/original-plan.jpg` 仅作为本地历史副本被忽略，不再参与构建。
 
 ## 静态部署
 
-执行 `npm ci && npm run build` 后，将 `index.html`、`style.css`、`app.js`、`assets/`、`SOURCES.json` 和 `licenses/` 一起放到静态站点目录，保留相对路径即可。
+执行 `npm ci && npm run build` 后，将 `index.html`、`style.css`、`app.js`、`assets/`、`reference/`、`SOURCES.json` 和 `licenses/` 一起放到静态站点目录，保留相对路径即可。
 
 现有线上页面由独立的 [m4n9o 仓库](https://github.com/sywyyhykkk/m4n9o) 托管，本仓库保存可重建的查看器源码。更新此仓库不会自动替换线上页面。
 

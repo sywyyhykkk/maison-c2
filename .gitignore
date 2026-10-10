@@ -8,7 +8,7 @@ node_modules/
 /app.js.*
 /src/textures.js
 
-# User-provided reference image stays local
+# Legacy duplicate; canonical floor plan is tracked in reference/floor-plans/
 /assets/original-plan.jpg
 
 # Local configuration, logs and system files
